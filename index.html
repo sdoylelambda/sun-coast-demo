@@ -51,6 +51,43 @@
 
 					</div>
 				</section>
+				<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Annotation</title>
+</head>
+<body>
+
+<script>
+    async function createImageAnnotation() {
+        const request = await fetch('https://example.com/image.jpg');
+        const blob = await request.blob();
+        const imageAttachmentId = await instance.createAttachment(blob);
+        const annotation = new PSPDFKit.Annotations.ImageAnnotation({
+            pageIndex: 0,
+            isSignature: true,
+            contentType: 'image/jpeg',
+            imageAttachmentId,
+            description: 'Example Image Annotation',
+            boundingBox: new PSPDFKit.Geometry.Rect({
+                left: 10,
+                top: 20,
+                width: 150,
+                height: 150,
+            }),
+        });
+
+        instance.create(annotation);
+    }
+
+    // Call the function to create the image annotation
+    createImageAnnotation();
+</script>
+
+</body>
+</html>
 
 			<!-- Features -->
 				<section id="features">
@@ -139,12 +176,12 @@
 				</section>
 
 			<!-- Banner -->
-				<section id="banner">
+				<!-- <section id="banner">
 					<div class="container">
 						<p>Use this space for <strong>profound thoughts</strong>.<br />
 						Or an enormous ad. Whatever.</p>
 					</div>
-				</section>
+				</section> -->
 
 			<!-- Main -->
 				<section id="main">
@@ -183,18 +220,8 @@
 												for these awesome demo photos</a></h2>
 											</header>
 											<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
-											<h3>You should probably check out her work</h3>
-											<p>Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit
-											ligula vel quam viverra sit amet mollis tortor congue. Sed quis mauris
-											sit amet magna accumsan tristique. Curabitur leo nibh, rutrum eu malesuada
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											in, tristique at erat lorem ipsum dolor sit amet lorem ipsum sed consequat
-											magna tempus veroeros lorem sed tempus aliquam lorem ipsum veroeros
-											consequat magna tempus lorem ipsum consequat Phasellus laoreet massa id
-											justo mattis pharetra. Fusce suscipit ligula vel quam viverra sit amet
-											mollis tortor congue. Sed quis mauris sit amet magna accumsan tristique.
-											Curabitur leo nibh, rutrum malesuada.</p>
+											<h3>Solar</h3>
+									
 											<p>Erat lorem ipsum veroeros consequat magna tempus lorem ipsum consequat
 											Phasellus laoreet massa id justo mattis pharetra. Fusce suscipit ligula
 											vel quam viverra sit amet mollis tortor congue. Sed quis mauris sit amet
@@ -391,6 +418,6 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
+			<script defer src="https://app.fastbots.ai/embed.js" data-bot-id="clw3r4n2100vzu1bagh7km6vu"></script>
 	</body>
 </html>
