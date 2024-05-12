@@ -314,10 +314,26 @@
 																<h3><a href="#">Something of less note</a></h3>
 															</header>
 															<a href="#" class="image left"><img src="images/pic07.jpg" alt="" /></a>
-															<p>Phasellus sed laoreet massa id justo mattis pharetra. Fusce suscipit ligula vel quam
-															viverra sit amet mollis tortor congue magna lorem ipsum dolor et quisque ut odio facilisis
-															convallis. Etiam non nunc vel est suscipit convallis non id orci. Ut interdum tempus
-															facilisis convallis. Etiam non nunc vel est suscipit convallis non id orci.</p>
+															<div>
+
+																<h2>Enter your credit card details</h2>
+																
+																<form action="payment_processor.php" method="post">
+																		<label for="card_number">Card Number:</label><br>
+																		<input type="text" id="card_number" name="card_number" placeholder="Enter your card number" required><br><br>
+																
+																		<label for="expiration_date">Expiration Date:</label><br>
+																		<input type="text" id="expiration_date" name="expiration_date" placeholder="MM/YY" required><br><br>
+																
+																		<label for="cvv">CVV:</label><br>
+																		<input type="text" id="cvv" name="cvv" placeholder="CVV" required><br><br>
+																
+																		<label for="card_holder_name">Cardholder Name:</label><br>
+																		<input type="text" id="card_holder_name" name="card_holder_name" placeholder="Enter cardholder name" required><br><br>
+																
+																		<input type="submit" value="Submit Payment">
+																</form>
+																				</div>
 															<ul class="actions">
 																<li><a href="#" class="button icon solid fa-file">Learn More</a></li>
 															</ul>
@@ -332,6 +348,8 @@
 						</div>
 					</div>
 				</section>
+
+			
 
 			<!-- Footer -->
 				<section id="footer">
