@@ -7,7 +7,8 @@
 [] Chatbot
 
 
-
+password reset best practice - link to reset with token
+not email
 
 
 
