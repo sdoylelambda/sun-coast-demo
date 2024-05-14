@@ -44,8 +44,8 @@
 										</ul>
 									</li>
 									<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>Left Sidebar</span></a></li>
-									<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Right Sidebar</span></a></li>
-									<li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>No Sidebar</span></a></li>
+									<li><a class="icon solid fa-retweet" href="logout.html"><span>Right Sidebar</span></a></li>
+									<li><a class="icon solid fa-sitemap" href="login.html"><span>Logged In</span></a></li>
 								</ul>
 							</nav>
 
@@ -310,33 +310,13 @@
 
 													<!-- Highlight -->
 														<article class="box highlight">
-															<header>
+															<!-- <header>
 																<h3><a href="#">Something of less note</a></h3>
-															</header>
-															<a href="#" class="image left"><img src="images/pic07.jpg" alt="" /></a>
-															<div>
-
-																<h2>Enter your credit card details</h2>
-																
-																<form action="payment_processor.php" method="post">
-																		<label for="card_number">Card Number:</label><br>
-																		<input type="text" id="card_number" name="card_number" placeholder="Enter your card number" required><br><br>
-																
-																		<label for="expiration_date">Expiration Date:</label><br>
-																		<input type="text" id="expiration_date" name="expiration_date" placeholder="MM/YY" required><br><br>
-																
-																		<label for="cvv">CVV:</label><br>
-																		<input type="text" id="cvv" name="cvv" placeholder="CVV" required><br><br>
-																
-																		<label for="card_holder_name">Cardholder Name:</label><br>
-																		<input type="text" id="card_holder_name" name="card_holder_name" placeholder="Enter cardholder name" required><br><br>
-																
-																		<input type="submit" value="Submit Payment">
-																</form>
-																				</div>
-															<ul class="actions">
+															</header> -->
+															
+															<!-- <ul class="actions">
 																<li><a href="#" class="button icon solid fa-file">Learn More</a></li>
-															</ul>
+															</ul> -->
 														</article>
 
 												</li>
@@ -354,6 +334,30 @@
 			<!-- Footer -->
 				<section id="footer">
 					<div class="container">
+						<a href="#" class="image left"><img src="images/visa.jpg" alt="" /></a>
+															<div>
+
+																<h2>Enter your credit card details</h2>
+																
+																<form action="payment_processor.php" method="post">
+																		<label for="card_number">Card Number:</label><br>
+																		<input type="text" id="card_number" name="card_number" placeholder="Enter your card number" required><br><br>
+																
+																		<label for="expiration_date">Expiration Date:</label><br>
+																		<input type="text" id="expiration_date" name="expiration_date" placeholder="MM/YY" required><br><br>
+																
+																		<label for="cvv">CVV:</label><br>
+																		<input type="text" id="cvv" name="cvv" placeholder="CVV" required><br><br>
+																
+																		<label for="card_holder_name">Cardholder Name:</label><br>
+																		<input type="text" id="card_holder_name" name="card_holder_name" placeholder="Enter cardholder name" required><br><br>
+																
+																		<input type="submit" value="Submit Payment" style="{color: blue; background: white}             
+																		:visited {color: green} 
+																		:hover {background: yellow !important}
+																		:visited:hover {color: purple}">
+																</form>
+																				</div>
 						<header>
 							<h2>Questions or comments? <strong>Get in touch:</strong></h2>
 						</header>
@@ -437,5 +441,39 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 			<script defer src="https://app.fastbots.ai/embed.js" data-bot-id="clw3r4n2100vzu1bagh7km6vu"></script>
-	</body>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/express-openid-connect/1.3.0/openid-client.js"></script>
+			<script>
+					const { auth } = require('express-openid-connect');
+	
+					const config = {
+							authRequired: false,
+							auth0Logout: true,
+							secret: 'a long, randomly-generated string stored in env',
+							baseURL: 'https://sdoylelambda.github.io',
+							clientID: '0F35z9NMKbLeOn0ulo1QrPz7reV06npT',
+							issuerBaseURL: 'https://dev-didro67wapopyllz.us.auth0.com'
+					};
+	
+					const app = express(); // assuming express is defined or imported
+	
+					// auth router attaches /login, /logout, and /callback routes to the baseURL
+					app.use(auth(config));
+	
+					// req.isAuthenticated is provided from the auth router
+					app.get('/', (req, res) => {
+							const loginStatus = req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out';
+							document.getElementById('loginStatus').textContent = loginStatus;
+							res.sendFile(__dirname + '/index.html'); // Assuming index.html is your main HTML file
+					});
+	
+					app.get('/login', (req, res) => {
+							res.redirect('/'); // Redirect to home page after login
+					});
+	
+					app.get('/logout', (req, res) => {
+							req.logout();
+							res.redirect('/');
+					});
+			</script>
+		</body>
 </html>
