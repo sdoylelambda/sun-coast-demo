@@ -47,7 +47,7 @@
         <h1>Login</h1>
     </header>
     <main style="max-width: 400px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-        <form id="loginForm" action="/login" method="post" style="margin-bottom: 20px;">
+        <form id="loginForm" action="/index.html" style="margin-bottom: 20px;">
             <div style="margin-bottom: 20px;">
                 <label for="username" style="display: block; margin-bottom: 5px;">Username:</label>
                 <input type="text" id="username" name="username" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
@@ -64,8 +64,16 @@
                 <input type="checkbox" id="rememberMe" name="rememberMe" style="margin-right: 5px;">
                 <label for="rememberMe">Remember Me</label>
             </div>
-            <button type="submit" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Login</button>
-        </form>
+            <button onclick="getValues()">Login</button>
+
+<script>
+    function getValues() {
+        var password = document.getElementById('password').value;
+        var username = document.getElementById('username').value;
+        var pin = document.getElementById('pin').value;
+        alert("\nPassword: " + password + "\nUsername: " + username + "\nPIN: " + pin);
+    }
+</script>        </form>
         <p style="text-align: center; font-size: 14px;">Don't have an account? <a href="register.html" style="color: #333; text-decoration: none;">Register here</a>.</p>
     </main>
 </body>
