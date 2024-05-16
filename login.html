@@ -29,6 +29,7 @@
         </ul>
       </li>
       <li><a class="icon solid fa-cog" href="pay-bill.html"><span>Pay Bill</span></a></li>
+      <li><a class="icon solid fa-cog" href="e-sign.html"><span>E-Sign</span></a></li>
       <li><a class="icon solid fa-sitemap" href="login.html"><span>Login</span></a></li>
       <li><a class="icon solid fa-retweet" href="login.html"><span>Logout</span></a></li>
       <li><a class="icon solid fa-sitemap" href="register.html"><span>Register</span></a></li>
@@ -47,7 +48,7 @@
         <h1>Login</h1>
     </header>
     <main style="max-width: 400px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-        <form id="loginForm" action="/index.html" style="margin-bottom: 20px;">
+        <form id="loginForm" action="index.html" style="margin-bottom: 20px;">
             <div style="margin-bottom: 20px;">
                 <label for="username" style="display: block; margin-bottom: 5px;">Username:</label>
                 <input type="text" id="username" name="username" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
@@ -72,8 +73,16 @@
         var username = document.getElementById('username').value;
         var pin = document.getElementById('pin').value;
         alert("\nUsername: " + username + "\nPassword: " + password +  "\nPIN: " + pin);
+        redirectToIndex()
     }
-</script>        </form>
+</script>        
+<script>
+  // Function to redirect to index.html
+  function redirectToIndex() {
+      window.location.href = 'index.html';
+  }
+</script>
+</form>
         <p style="text-align: center; font-size: 14px;">Don't have an account? <a href="register.html" style="color: #333; text-decoration: none;">Register here</a>.</p>
     </main>
 </body>
