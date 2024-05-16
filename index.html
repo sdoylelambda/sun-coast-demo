@@ -10,6 +10,54 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<!-- Include SignaturePad CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/signature_pad/dist/signature-pad.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    h1 {
+        text-align: center; /* Center align the title */
+    }
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto; /* Make the container fill the entire viewport height */
+    }
+    #contract-message {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 18px;
+        color: #662;
+    }
+    #signature-pad {
+        border: 1px solid #ccc;
+        margin: 20px auto;
+        width: 80%;
+        max-width: 600px;
+        background-color: white !important;
+    }
+    #signature-pad canvas {
+        width: 100%;
+        height: 200px;
+    }
+    #signature-btns {
+        text-align: center;
+        margin-top: 10px;
+    }
+    .btn {
+        display: inline-block;
+        margin-right: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -328,6 +376,21 @@
 			<!-- Footer -->
 				<section id="footer">
 					<div class="container">
+						<h1>E-Sign Document</h1>
+<div class="center-container">
+  <div id="contract-message">
+      <p>Here is a contract example for e-sign. Try it out for fun!</p>
+  </div>
+</div>
+<div id="signature-pad">
+    <canvas></canvas>
+</div>
+<div id="signature-btns">
+    <button class="btn" id="clear-btn">Clear</button>
+    <button class="btn" id="signature-btn">Sign Document</button>
+</div>
+<div id="copyright" class="container"></div>
+<div id="copyright" class="container"></div>
 						<a href="https://sdoylelambda.github.io/sun-coast-demo/pay-bill.html" class="image left"><img src="images/visa.jpg" alt="" /></a>
 															<div>
 
@@ -436,6 +499,44 @@
 			<script src="assets/js/main.js"></script>
 			<script defer src="https://app.fastbots.ai/embed.js" data-bot-id="clw3r4n2100vzu1bagh7km6vu"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/express-openid-connect/1.3.0/openid-client.js"></script>
+			<script>
+				document.addEventListener('DOMContentLoaded', function () {
+						var canvas = document.querySelector('canvas');
+						var signaturePad = new SignaturePad(canvas);
+		
+						document.getElementById('signature-btn').addEventListener('click', function () {
+								if (signaturePad.isEmpty()) {
+										alert('Please provide a signature first.');
+								} else {
+										// Convert the signature to data URL
+										var signatureData = signaturePad.toDataURL();
+										// Send the signatureData to your backend for storage or processing
+										// For example, you can use fetch or XMLHttpRequest to send the data
+										// Example using fetch:
+										// fetch('/save-signature', {
+										//     method: 'POST',
+										//     headers: {
+										//         'Content-Type': 'application/json'
+										//     },
+										//     body: JSON.stringify({ signature: signatureData })
+										// }).then(response => {
+										//     // Handle response
+										//     console.log('Signature saved:', response);
+										// }).catch(error => {
+										//     // Handle error
+										//     console.error('Error saving signature:', error);
+										// });
+										alert('Signature captured successfully.');
+										// Optional: Clear the signature pad after capturing the signature
+										signaturePad.clear();
+								}
+						});
+		
+						document.getElementById('clear-btn').addEventListener('click', function () {
+								signaturePad.clear();
+						});
+				});
+		</script>
 			<script>
 					const { auth } = require('express-openid-connect');
 	
